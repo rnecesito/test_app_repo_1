@@ -50,7 +50,7 @@
         android:background="#fff"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:text="Competition"
+        android:text="@string/jap_competition"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>
