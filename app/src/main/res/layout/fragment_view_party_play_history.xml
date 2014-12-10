@@ -31,10 +31,10 @@
                 android:background="#999" >
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="Party" />
+                    android:text="@string/jap_party_name" />
 
                 <LinearLayout
                     android:layout_width="1dp"
@@ -44,10 +44,10 @@
                 </LinearLayout>
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="Date" />
+                    android:text="@string/jap_date" />
 
                 <LinearLayout
                     android:layout_width="1dp"
@@ -57,10 +57,11 @@
                 </LinearLayout>
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="Course" />
+                    android:layout_gravity="left"
+                    android:text="@string/jap_course" />
 
                 <LinearLayout
                     android:layout_width="1dp"
@@ -70,180 +71,34 @@
                 </LinearLayout>
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="30dp"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="Detail" />
+                    android:layout_gravity="left"
+                    android:text="@string/jap_edit" />
             </TableRow>
 
-            <TableRow
-                android:id="@+id/tableRow2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#CCC" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:text="Timmy&apos;s"
-                    android:textSize="12sp" />
-
-                <LinearLayout
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent" >
-
-                    <View style="@style/Divider" />
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:text="10/12/1"
-                    android:textSize="12sp" />
-
-                <LinearLayout
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent" >
-
-                    <View style="@style/Divider" />
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:text="Course"
-                    android:textSize="12sp" />
-
-                <LinearLayout
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent" >
-
-                    <View style="@style/Divider" />
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:text="etc"
-                    android:textSize="12sp" />
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/tableRow3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#FFF" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:text="Dragon"
-                    android:textSize="12sp" />
-
-                <LinearLayout
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent" >
-
-                    <View style="@style/Divider" />
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:text="10/12/1"
-                    android:textSize="12sp" />
-
-                <LinearLayout
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent" >
-
-                    <View style="@style/Divider" />
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:text="Course"
-                    android:textSize="12sp" />
-
-                <LinearLayout
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent" >
-
-                    <View style="@style/Divider" />
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:text="etc"
-                    android:textSize="12sp" />
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/tableRow4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#CCC" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:text="tester"
-                    android:textSize="12sp" />
-
-                <LinearLayout
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent" >
-
-                    <View style="@style/Divider" />
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:text="10/12/1"
-                    android:textSize="12sp" />
-
-                <LinearLayout
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent" >
-
-                    <View style="@style/Divider" />
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:text="Course"
-                    android:textSize="12sp" />
-
-                <LinearLayout
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent" >
-
-                    <View style="@style/Divider" />
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:text="etc"
-                    android:textSize="12sp" />
-            </TableRow>
         </TableLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="380dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:isScrollContainer="false">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/horizontal_line"
+                android:padding="1dp"
+                android:stretchColumns="*"
+                android:id="@+id/party_history_table">
+
+            </TableLayout>
+
+        </ScrollView>
+
     </LinearLayout>
 
     <TextView

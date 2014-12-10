@@ -79,7 +79,7 @@ public class CreateClosedCompetitionFragment extends Fragment {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pdialog.setMessage(getResources().getString(R.string.jap_loading_coursesf));
+            pdialog.setMessage(getResources().getString(R.string.jap_loading_courses));
             pdialog.show();
         }
 

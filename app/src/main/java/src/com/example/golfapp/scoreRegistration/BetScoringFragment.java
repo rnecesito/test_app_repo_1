@@ -468,7 +468,7 @@ public class BetScoringFragment extends BaseFragment {
             if(success) {
                 JSONObject party_info = null;
                 JSONArray users_info = null;
-                JSONObject
+//                JSONObject
                 try {
                     users_info = new JSONArray(users_json_string);
                     ArrayList<Users> users_list = new ArrayList<Users>();
