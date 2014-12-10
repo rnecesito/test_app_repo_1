@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\Rey\AndroidStudioProjects\golfapp_ed2\app\libs\butterknife-5.1.1.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="b3652dfd65ca0bcf18790ff1a1f7624af4cb2bb8">
+        <dex dex="C:\Users\Rey\AndroidStudioProjects\golfapp_ed2\app\build\intermediates\pre-dexed\debug\butterknife-5.1.1-fe6d550bc4584c377c96a4f3f58cf94fa5fff834.jar" />
+    </item>
+    <item
+        jar="E:\Program Files\android-sdk-windows\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67">
+        <dex dex="C:\Users\Rey\AndroidStudioProjects\golfapp_ed2\app\build\intermediates\pre-dexed\debug\support-v4-19.1.0-6cfcb22ba443edd2ff2a61f454c74260fafa50f6.jar" />
+    </item>
+
+</items>

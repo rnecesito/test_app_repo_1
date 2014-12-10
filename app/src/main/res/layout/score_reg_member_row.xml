@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow  xmlns:android="http://schemas.android.com/apk/res/android"
+           android:id="@+id/tableRow2"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:background="#CCC" >
+
+    <TextView
+        android:id="@+id/score_reg_member_name"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textColor="#000"
+        android:textSize="12sp" />
+
+    <LinearLayout
+        android:layout_width="1dp"
+        android:layout_height="match_parent" >
+
+        <View style="@style/Divider" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/score_reg_member_handicap"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textColor="#000"
+        android:textSize="12sp" />
+
+    <LinearLayout
+        android:layout_width="1dp"
+        android:layout_height="match_parent" >
+
+        <View style="@style/Divider" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/score_reg_member_score"
+        android:layout_width="35dp"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textColor="#000"
+        android:textSize="12sp" />
+
+    <ImageButton
+        android:id="@+id/add_score"
+        android:visibility="invisible"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/arrow_up_float" />
+
+    <ImageButton
+        android:id="@+id/sub_score"
+        android:visibility="invisible"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/arrow_down_float" />
+</TableRow>

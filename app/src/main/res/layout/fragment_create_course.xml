@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/xml_tablelayout_bg"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="@string/jap_course_name"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/course_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/xml_tablelayout_bg"
+                android:inputType="textPersonName"
+                android:padding="5dp"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="@string/jap_holes"
+                android:textSize="14sp" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/xml_tablelayout_bg"
+                android:inputType="numberDecimal"
+                android:padding="5dp"
+                android:textSize="14sp"
+                android:id="@+id/hole_count" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="@string/jap_handicap"
+                android:textSize="14sp" />
+
+            <Spinner
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:entries="@array/active"
+                android:id="@+id/handicap" />
+        </LinearLayout>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/horizontal_line"
+            android:padding="1dp"
+            android:stretchColumns="*" >
+
+            <TableRow
+                android:id="@+id/create_course_header"
+                android:background="#999" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="@string/jap_hole" />
+
+                <LinearLayout
+                    android:id="@+id/divider"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent" >
+
+                    <View style="@style/Divider" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="@string/jap_par" />
+            </TableRow>
+
+        </TableLayout>
+
+        <ScrollView
+            android:id="@+id/table_scroll"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:isScrollContainer="false">
+
+            <TableLayout
+                android:id="@+id/holes_table"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/horizontal_line"
+                android:padding="1dp"
+                android:stretchColumns="*">
+
+            </TableLayout>
+
+        </ScrollView>
+
+
+        <Button
+            android:id="@+id/create_course"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:text="@string/jap_save" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/relativeLayout1"
+        android:layout_alignTop="@+id/relativeLayout1"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="-10dp"
+        android:background="#fff"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="@string/jap_create_course"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+</RelativeLayout>

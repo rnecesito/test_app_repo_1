@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/xml_tablelayout_bg"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@null"
+            android:drawableLeft="@drawable/user"
+            android:drawablePadding="10dp"
+            android:text="@string/jap_profile"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/court_admin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@null"
+            android:drawableLeft="@drawable/ic_chart"
+            android:drawablePadding="10dp"
+            android:text="@string/jap_court_admin"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/party_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@null"
+            android:drawableLeft="@drawable/peopleicon"
+            android:drawablePadding="10dp"
+            android:text="@string/jap_party_play"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/competition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@null"
+            android:drawableLeft="@drawable/ic_list"
+            android:drawablePadding="10dp"
+            android:text="@string/jap_competition"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/relativeLayout1"
+        android:layout_alignTop="@+id/relativeLayout1"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="-10dp"
+        android:background="#fff"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="@string/action_settings"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+</RelativeLayout>

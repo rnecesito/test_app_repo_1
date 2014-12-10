@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--<string name="app_name">GolfApp</string>-->
+
+    <string name="hello_world">Hello world!</string>
+
+
+    <string name="from_date">From Date</string>
+    <string name="to_date">To Date</string>
+    <string-array name="course_list">
+        <item>Course 1</item>
+        <item>Course 2</item>
+        <item>Course 3</item>
+        <item>Course 4</item>
+    </string-array>
+    <string-array name="handicap_list">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+        <item>37</item>
+        <item>38</item>
+        <item>39</item>
+        <item>40</item>
+        <item>41</item>
+        <item>42</item>
+        <item>43</item>
+        <item>44</item>
+        <item>45</item>
+        <item>46</item>
+        <item>47</item>
+        <item>48</item>
+        <item>49</item>
+        <item>50</item>
+        <item>51</item>
+        <item>52</item>
+        <item>53</item>
+        <item>54</item>
+        <item>55</item>
+        <item>56</item>
+        <item>57</item>
+        <item>58</item>
+        <item>59</item>
+        <item>60</item>
+        <item>61</item>
+        <item>62</item>
+        <item>63</item>
+        <item>64</item>
+    </string-array>
+    <string-array name="gender">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+    <string-array name="active">
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+    <string-array name="party">
+        <item>Timmy</item>
+        <item>Eddie</item>
+        <item>Chloe</item>
+    </string-array>
+    <string-array name="group">
+        <item>Red</item>
+        <item>Blue</item>
+        <item>Green</item>
+    </string-array>
+
+    <!--<string name="app_name">ゴルフアプリ</string>-->
+    <!--<string name="action_settings">ゲーム設定</string>-->
+    <!--<string name="jap_new_registration">新規登録</string>-->
+    <!--<string name="jap_email">メールアドレス</string>-->
+    <!--<string name="jap_name">氏名</string>-->
+    <!--<string name="jap_password">パスワード</string>-->
+    <!--<string name="jap_settings">設定</string>-->
+    <!--<string name="jap_score_registration">スコア登録</string>-->
+    <!--<string name="jap_counting">集計</string>-->
+    <!--<string name="jap_history">プレイ履歴</string>-->
+    <!--<string name="jap_login">ログイン</string>-->
+    <!--<string name="jap_logout">ログアウト</string>-->
+    <!--<string name="jap_profile">プロフィール</string>-->
+    <!--<string name="jap_court_admin">ゴルフ場管理</string>-->
+    <!--<string name="jap_party_play">パーティープレイ</string>-->
+    <!--<string name="jap_competition">コンペ名</string>-->
+    <!--<string name="jap_gender">性別</string>-->
+    <!--<string name="jap_handicap">ハンディー</string>-->
+    <!--<string name="jap_new_pass">新規パスワード</string>-->
+    <!--<string name="jap_create_courses">ゴルフ場設定</string>-->
+    <!--<string name="jap_view_courses">ゴルフ場確認</string>-->
+    <!--<string name="jap_course_name">ゴルフ場名</string>-->
+    <!--<string name="jap_holes">ホール数</string>-->
+    <!--<string name="jap_save">保存</string>-->
+    <!--<string name="jap_par">パー</string>-->
+    <!--<string name="jap_yes">有り</string>-->
+    <!--<string name="jap_no">無し</string>-->
+    <!--<string name="jap_edit">編集</string>-->
+    <!--<string name="jap_create_play">パーティー登録</string>-->
+    <!--<string name="jap_view_party_play">プレイ確認</string>-->
+    <!--<string name="jap_bet_registration">握り登録</string>-->
+    <!--<string name="jap_party_name">パーティー名</string>-->
+    <!--<string name="jap_course">ゴルフ場名</string>-->
+    <!--<string name="jap_party_date">プレイ日時</string>-->
+    <!--<string name="jap_competitors_name">同伴者氏名</string>-->
+    <!--<string name="jap_view_competition">コンペ確認</string>-->
+    <!--<string name="jap_join_competition">コンペへ参加</string>-->
+    <!--<string name="jap_create_group">グループ作成</string>-->
+    <!--<string name="jap_view_groups">グループ確認</string>-->
+    <!--<string name="jap_app_name">ゴルフアプリ</string>-->
+    <!--<string name="jap_select_party_play">パーティープレイ選択</string>-->
+    <!--<string name="jap_course_registration">ゴルフ場登録</string>-->
+    <!--<string name="jap_create_course">ゴルフ場設定</string>-->
+    <!--<string name="jap_hole">ホール</string>-->
+    <!--<string name="jap_edit_play">プレイを編集</string>-->
+    <!--<string name="jap_party_play_score_counting">パーティースコア集計</string>-->
+    <!--<string name="jap_bet_counting">握り集計</string>-->
+    <!--<string name="jap_competition_score_counting">コンペ集計</string>-->
+    <!--<string name="jap_party_play_history">プレイ履歴</string>-->
+    <!--<string name="jap_competition_history">コンペ履歴</string>-->
+    <!--<string name="jap_party_play_scoring">パーティープレイ集計</string>-->
+    <!--<string name="jap_closed_competition_scoring">クローズコンペスコア登録</string>-->
+    <!--<string name="jap_open_competition_scoring">オープンコンペスコア登録</string>-->
+    <!--<string name="jap_gross">グロス</string>-->
+    <!--<string name="jap_net">ネット</string>-->
+    <!--<string name="jap_rank">順位</string>-->
+    <!--<string name="jap_open_competition">オープンコンペ</string>-->
+    <!--<string name="jap_create_competition">コンペ作成</string>-->
+    <!--<string name="jap_approve_competition">コンペを承認</string>-->
+    <!--<string name="jap_party_play_registration">パーティープレイ登録</string>-->
+    <!--<string name="jap_first_name">名</string>-->
+    <!--<string name="jap_last_name">姓</string>-->
+    <!--<string name="jap_retype_password">パスワード再び</string>-->
+    <!--<string name="jap_register">登録</string>-->
+    <!--<string name="jap_update">更新</string>-->
+    <!--<string name="jap_select_competition">コンペ選択</string>-->
+    <!--<string name="jap_delete">削除</string>-->
+    <!--<string name="jap_game_settings">ゲーム設定</string>-->
+    <!--<string name="jap_create_open_competition">オープンコンペを作成</string>-->
+    <!--<string name="jap_competition_name">大会名</string>-->
+    <!--<string name="jap_competition_date">コンクール日</string>-->
+    <!--<string name="jap_registration_deadline">登録締切</string>-->
+    <!--<string name="jap_create">作る</string>-->
+    <!--<string name="jap_user_profile">会員プロフィール</string>-->
+    <!--<string name="jap_date">日時</string>-->
+    <!--<string name="jap_bet_type1">握り1</string>-->
+    <!--<string name="jap_bet_type2">握り2</string>-->
+    <!--<string name="jap_bet_type3">握り3</string>-->
+    <!--<string name="jap_bet_summary">握り一覧</string>-->
+    <!--<string name="jap_view_bet_summary">握り一覧表示</string>-->
+    <!--<string name="jap_record_score">スコアを記録</string>-->
+    <!--<string name="jap_closed_competition">クローズコンペ</string>-->
+    <!--<string name="jap_operand">演算値</string>-->
+    <!--<string name="jap_score">スコア</string>-->
+    <!--<string name="jap_view_closed_competition_score">コンペスコア登録</string>-->
+    <!--<string name="jap_view_open_competition_score">コンペスコア登録</string>-->
+    <!--<string name="jap_view_party_play_history">プレイ履歴一覧</string>-->
+    <!--<string name="jap_detail">詳細</string>-->
+    <!--<string name="jap_view_competition_history">コンベ履歴一覧</string>-->
+    <!--<string name="jap_logging_in">ログイン中...</string>-->
+    <!--<string name="jap_login_success">ログインしました。</string>-->
+    <!--<string name="jap_invalid_login">IDまたはパスワードが違います。</string>-->
+    <!--<string name="jap_registering">登録中...</string>-->
+    <!--<string name="jap_reg_success">登録完了しました。</string>-->
+    <!--<string name="jap_email_taken">すでに使用されているメールアドレスです。</string>-->
+    <!--<string name="jap_reg_failed">登録できませんでした。再試行してください。</string>-->
+    <!--<string name="jap_updating_profile">プロフィール更新中...</string>-->
+    <!--<string name="jap_profile_updated">更新完了しました。</string>-->
+    <!--<string name="jap_profile_update_failed">更新できませんでした。再試行してください。</string>-->
+    <!--<string name="jap_enter_firstname">氏名(名)を入力してください。</string>-->
+    <!--<string name="jap_enter_lastname">氏名(姓)を入力してください。</string>-->
+    <!--<string name="jap_enter_email">メールアドレスを入力してください。</string>-->
+    <!--<string name="jap_enter_pass">パスワードを入力してください。</string>-->
+    <!--<string name="jap_enter_pass_again">パスワードを再入力してください。</string>-->
+    <!--<string name="jap_match_pass">パスワードが一致しません。</string>-->
+    <!--<string name="jap_loading_courses">ゴルフ場情報を取得中...</string>-->
+    <!--<string name="jap_courses_loaded">取得完了しました。</string>-->
+    <!--<string name="jap_something_wrong">予期せぬ状況が発生しました。再試行してください。</string>-->
+    <!--<string name="jap_creating_course">ゴルフ場設定中...</string>-->
+    <!--<string name="jap_course_created">設定完了しました。</string>-->
+    <!--<string name="jap_enter_course_name">ゴルフ場名を入力してください。</string>-->
+    <!--<string name="jap_upto_18_holes">登録可能なゴルフ場は18カ所までです。</string>-->
+    <!--<string name="jap_loading_course_info">ゴルフ場情報取得中...</string>-->
+    <!--<string name="jap_info_loaded">取得完了しました。</string>-->
+    <!--<string name="jap_getting_course_info">ゴルフ場情報を取得。</string>-->
+    <!--<string name="jap_deleting_course">ゴルフ場を削除中</string>-->
+    <!--<string name="jap_course_deleted">削除完了しました。</string>-->
+    <!--<string name="jap_sure">本当に実行してもよろしいですか?</string>-->
+    <!--<string name="jap_loading_courses_players">ゴルフ場とプレイヤー情報を取得中...</string>-->
+    <!--<string name="jap_loading_complete">取得完了しました。</string>-->
+    <!--<string name="jap_creating_party">パーティー登録中...</string>-->
+    <!--<string name="jap_party_created">パーティー登録完了しました。</string>-->
+    <!--<string name="jap_upto_4_people">パーティーは4名までです。</string>-->
+    <!--<string name="jap_enter_party_name">パーティー名を入力してください。</string>-->
+    <!--<string name="jap_enter_valid_date">日付を入力してください。</string>-->
+    <!--<string name="jap_loaing_party_info">パーティー情報取得中...</string>-->
+    <!--<string name="jap_updating_party">パーティー更新中...</string>-->
+    <!--<string name="jap_party_updated">更新完了しました。</string>-->
+    <!--<string name="jap_deleting_party">パーティー削除中...</string>-->
+    <!--<string name="jap_party_deleted">削除完了しました。</string>-->
+    <!--<string name="jap_loading_parties">パーティー情報を取得中...</string>-->
+    <!--<string name="jap_parties_loaded">転送完了しました。</string>-->
+    <!--<string name="jap_creating_competition">コンペ作成中...</string>-->
+    <!--<string name="jap_competition_created">作成完了しました。</string>-->
+    <!--<string name="jap_updating_competition">コンペ更新中...</string>-->
+    <!--<string name="jap_competition_updated">更新完了しました。</string>-->
+    <!--<string name="jap_joining_competition">コンペへ参加申請中...</string>-->
+    <!--<string name="jap_join_competition_success">コンペへの参加登録完了しました。</string>-->
+    <!--<string name="jap_getting_comp_competitors">コンペの参加者を取得中...</string>-->
+    <!--<string name="jap_getting_comp_groups">コンペの参加グループを取得中...</string>-->
+    <!--<string name="jap_loading_user_profile">プロフィール取得中</string>-->
+    <!--<string name="jap_enter_competition_name">コンペ名を入力してください。</string>-->
+    <!--<string name="jap_edit_closed_competition">クローズコンペを編集</string>-->
+    <!--<string name="jap_group_name">グループ名</string>-->
+    <!--<string name="jap_add_member">メンバーを追加</string>-->
+    <!--<string name="jap_select_group">グループを選択</string>-->
+    <!--<string name="jap_okay">参加</string>-->
+    <!--<string name="jap_search_group"> グループ検索</string>-->
+    <!--<string name="jap_show_my_group_only"> 自分のグループのみ表示</string>-->
+    <!--<string name="jap_group"> グループ</string>-->
+    <!--<string name="jap_members">メンバ</string>-->
+
+
+    <string name="app_name">Golf App</string>
+    <string name="action_settings">Settings</string>
+    <string name="jap_new_registration">New Registration</string>
+    <string name="jap_email">Email</string>
+    <string name="jap_name">Name</string>
+    <string name="jap_password">Password</string>
+    <string name="jap_settings">Settings</string>
+    <string name="jap_score_registration">Score Registration</string>
+    <string name="jap_counting">Counting</string>
+    <string name="jap_history">History</string>
+    <string name="jap_login">Login</string>
+    <string name="jap_logout">Logout</string>
+    <string name="jap_profile">Profile</string>
+    <string name="jap_court_admin">Course Administration</string>
+    <string name="jap_party_play">Party Play</string>
+    <string name="jap_competition">Competition</string>
+    <string name="jap_gender">Gender</string>
+    <string name="jap_handicap">Handicap</string>
+    <string name="jap_new_pass">New Password</string>
+    <string name="jap_create_courses">Create Courses</string>
+    <string name="jap_view_courses">View Courses</string>
+    <string name="jap_course_name">Course Name</string>
+    <string name="jap_holes">Holes</string>
+    <string name="jap_save">Save</string>
+    <string name="jap_par">Par</string>
+    <string name="jap_yes">Yes</string>
+    <string name="jap_no">No</string>
+    <string name="jap_edit">Edit</string>
+    <string name="jap_create_play">Create Play</string>
+    <string name="jap_view_party_play">View Party Play</string>
+    <string name="jap_bet_registration">Bet Registration</string>
+    <string name="jap_party_name">Party Name</string>
+    <string name="jap_course">Course</string>
+    <string name="jap_party_date">Party Date</string>
+    <string name="jap_competitors_name">Fellow Competitors Name</string>
+    <string name="jap_view_competition">View Competition</string>
+    <string name="jap_join_competition">Join Competition</string>
+    <string name="jap_create_group">Create Group</string>
+    <string name="jap_view_groups">View Groups</string>
+    <string name="jap_app_name">GolfApp</string>
+    <string name="jap_select_party_play">Select Party Play</string>
+    <string name="jap_course_registration">Course Registration</string>
+    <string name="jap_create_course">Create Course</string>
+    <string name="jap_hole">Hole</string>
+    <string name="jap_edit_play">Edit Play</string>
+    <string name="jap_party_play_score_counting">Party Play Score Counting</string>
+    <string name="jap_bet_counting">Bet Counting</string>
+    <string name="jap_competition_score_counting">Competition Score Counting</string>
+    <string name="jap_party_play_history">Party Play History</string>
+    <string name="jap_competition_history">Competition History</string>
+    <string name="jap_party_play_scoring">Party Play Scoring</string>
+    <string name="jap_closed_competition_scoring">Closed Competition Scoring</string>
+    <string name="jap_open_competition_scoring">Open Competition Scoring</string>
+    <string name="jap_gross">Gross</string>
+    <string name="jap_net">Net</string>
+    <string name="jap_rank">Rank</string>
+    <string name="jap_open_competition">Open Competition</string>
+    <string name="jap_create_competition">Create Competition</string>
+    <string name="jap_approve_competition">Approve Competition</string>
+    <string name="jap_party_play_registration">Party Play Registration</string>
+    <string name="jap_first_name">First Name</string>
+    <string name="jap_last_name">Last Name</string>
+    <string name="jap_retype_password">Retype Password</string>
+    <string name="jap_register">Register</string>
+    <string name="jap_update">Update</string>
+    <string name="jap_select_competition">Select Competition</string>
+    <string name="jap_delete">Delete</string>
+    <string name="jap_game_settings">Game Settings</string>
+    <string name="jap_create_open_competition">Create Open Competition</string>
+    <string name="jap_competition_name">Competition Name</string>
+    <string name="jap_competition_date">Competition Date</string>
+    <string name="jap_registration_deadline">Registration Deadline</string>
+    <string name="jap_create">Create</string>
+    <string name="jap_user_profile">User Profile</string>
+    <string name="jap_date">Date</string>
+    <string name="jap_bet_type1">Bet Type 1</string>
+    <string name="jap_bet_type2">Bet Type 2</string>
+    <string name="jap_bet_type3">Bet Type 3</string>
+    <string name="jap_bet_summary">Bet Summary</string>
+    <string name="jap_view_bet_summary">View Bet Summary</string>
+    <string name="jap_record_score">Record Score</string>
+    <string name="jap_closed_competition">Closed Competition</string>
+    <string name="jap_operand">Operand</string>
+    <string name="jap_score">Score</string>
+    <string name="jap_view_closed_competition_score">View Closed Competition Score</string>
+    <string name="jap_view_open_competition_score">View Open Competition Score</string>
+    <string name="jap_view_party_play_history">View Party Play History</string>
+    <string name="jap_detail">Detail</string>
+    <string name="jap_view_competition_history">View Competition History</string>
+    <string name="jap_logging_in">Logging in...</string>
+    <string name="jap_login_success">Login successful.</string>
+    <string name="jap_invalid_login">Invalid email/password.</string>
+    <string name="jap_registering">Registering...</string>
+    <string name="jap_reg_success">Registration successful.</string>
+    <string name="jap_email_taken">Email has already been taken.</string>
+    <string name="jap_reg_failed">Registration failed. Please try again.</string>
+    <string name="jap_updating_profile">Updating profile...</string>
+    <string name="jap_profile_updated">Profile updated.</string>
+    <string name="jap_profile_update_failed">Update failed. Please try again.</string>
+    <string name="jap_enter_firstname">Please enter your first name.</string>
+    <string name="jap_enter_lastname">Please enter your last name.</string>
+    <string name="jap_enter_email">Please enter your email.</string>
+    <string name="jap_enter_pass">Please enter your password.</string>
+    <string name="jap_enter_pass_again">Please enter password again.</string>
+    <string name="jap_match_pass">Your passwords do not match.</string>
+    <string name="jap_loading_courses">Loading courses...</string>
+    <string name="jap_courses_loaded">Courses loaded.</string>
+    <string name="jap_something_wrong">Something went wrong. Please try again.</string>
+    <string name="jap_creating_course">Creating course...</string>
+    <string name="jap_course_created">Course created.</string>
+    <string name="jap_enter_course_name">Please enter course name.</string>
+    <string name="jap_upto_18_holes">Only up to 18 holes allowed.</string>
+    <string name="jap_loading_course_info">Loading course information...</string>
+    <string name="jap_info_loaded">Information loaded.</string>
+    <string name="jap_getting_course_info">Getting course information.</string>
+    <string name="jap_deleting_course">Deleting course...</string>
+    <string name="jap_course_deleted">Course deleted.</string>
+    <string name="jap_sure">Are you sure?</string>
+    <string name="jap_loading_courses_players">Loading courses and players...</string>
+    <string name="jap_loading_complete">Loading complete.</string>
+    <string name="jap_creating_party">Creating party...</string>
+    <string name="jap_party_created">Party created.</string>
+    <string name="jap_upto_4_people">Only up to 4 people in a party.</string>
+    <string name="jap_enter_party_name">Enter a party name.</string>
+    <string name="jap_enter_valid_date">Please enter a valid date.</string>
+    <string name="jap_loaing_party_info">Loading party information...</string>
+    <string name="jap_updating_party">Updating party...</string>
+    <string name="jap_party_updated">Party updated.</string>
+    <string name="jap_deleting_party">Deleting party...</string>
+    <string name="jap_party_deleted">Party deleted.</string>
+    <string name="jap_loading_parties">Loading parties...</string>
+    <string name="jap_parties_loaded">Parties loaded.</string>
+    <string name="jap_creating_competition">Creating competition...</string>
+    <string name="jap_competition_created">Competition created.</string>
+    <string name="jap_updating_competition">Updating competition...</string>
+    <string name="jap_competition_updated">Competition updated.</string>
+    <string name="jap_joining_competition">Joining competition...</string>
+    <string name="jap_join_competition_success">Successfully joined competition.</string>
+    <string name="jap_getting_comp_competitors">Getting competition competitors...</string>
+    <string name="jap_getting_comp_groups">Getting competition groups...</string>
+    <string name="jap_loading_user_profile">Loading user profile...</string>
+    <string name="jap_enter_competition_name">Enter a competition name</string>
+    <string name="jap_edit_closed_competition">Edit Closed Competition</string>
+    <string name="jap_group_name">Group Name</string>
+    <string name="jap_add_member">Add Member</string>
+    <string name="jap_select_group">Select Group</string>
+    <string name="jap_okay">Okay</string>
+    <string name="jap_search_group">Search Group</string>
+    <string name="jap_show_my_group_only">Show My Group Only</string>
+    <string name="jap_group">Group</string>
+    <string name="jap_members">Members</string>
+</resources>

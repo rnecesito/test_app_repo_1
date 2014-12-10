@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">GolfApp</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string-array name="course_list">
+        <item>Course 1</item>
+        <item>Course 2</item>
+        <item>Course 3</item>
+        <item>Course 4</item>
+    </string-array>
+    <string-array name="handicap_list">
+        <item>5</item>
+        <item>4</item>
+        <item>3</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="gender">
+        <item>Male</item>
+        <item>Femail</item>
+    </string-array>
+    <string-array name="active">
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+    <string-array name="party">
+        <item>Timmy</item>
+        <item>Eddie</item>
+        <item>Chloe</item>
+    </string-array>
+ <string-array name="group">
+        <item>Red</item>
+        <item>Blue</item>
+        <item>Green</item>
+    </string-array>
+</resources>

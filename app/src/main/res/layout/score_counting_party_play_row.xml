@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="#CCC" >
+
+    <TextView
+        android:id="@+id/party_play_row_name"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textColor="#000"
+        android:textSize="12sp" />
+
+    <LinearLayout
+        android:layout_width="1dp"
+        android:layout_height="match_parent" >
+
+        <View style="@style/Divider" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/party_play_gross"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textColor="#000"
+        android:textSize="12sp" />
+
+    <LinearLayout
+        android:layout_width="1dp"
+        android:layout_height="match_parent" >
+
+        <View style="@style/Divider" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/party_play_net"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textColor="#000"
+        android:textSize="12sp" />
+
+    <LinearLayout
+        android:layout_width="1dp"
+        android:layout_height="match_parent" >
+
+        <View style="@style/Divider" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/party_play_rank"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textColor="#000"
+        android:textSize="12sp" />
+
+</TableRow>
