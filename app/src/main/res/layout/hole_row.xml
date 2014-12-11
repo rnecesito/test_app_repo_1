@@ -36,6 +36,5 @@
         android:paddingLeft="5dp"
         android:paddingRight="40dp"
         android:inputType="numberDecimal"
-        android:textColor="#000"
-        android:text="2" />
+        android:textColor="#000" />
 </TableRow>

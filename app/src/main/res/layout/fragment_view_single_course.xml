@@ -56,15 +56,11 @@
                 android:text="@string/jap_holes"
                 android:textSize="14sp" />
 
-            <EditText
+            <Spinner
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
                 android:layout_weight="1"
-                android:background="@drawable/xml_tablelayout_bg"
-                android:inputType="numberDecimal"
-                android:padding="5dp"
-                android:textSize="14sp"
+                android:entries="@array/holes_list"
                 android:id="@+id/hole_count_info" />
         </LinearLayout>
 

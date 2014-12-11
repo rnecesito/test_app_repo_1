@@ -12,6 +12,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -299,7 +300,7 @@ public class CourseInfoFragment extends BaseFragment {
             }
             if(success) {
                 Toast.makeText(getContext(), "Course updated.", Toast.LENGTH_SHORT).show();
-                showFragmentAndAddToBackStack(new com.example.golfapp.gameSettings.courseAdmin.ViewCourseFragment());
+                showFragment(new com.example.golfapp.gameSettings.courseAdmin.ViewCourseFragment());
             } else {
                 Toast.makeText(getContext(), getResources().getString(R.string.jap_something_wrong), Toast.LENGTH_SHORT).show();
             }
@@ -386,7 +387,7 @@ public class CourseInfoFragment extends BaseFragment {
             }
             if(success) {
                 Toast.makeText(getContext(), getResources().getString(R.string.jap_course_deleted), Toast.LENGTH_SHORT).show();
-                getFragmentManager().popBackStack();
+                showFragment(new com.example.golfapp.gameSettings.courseAdmin.ViewCourseFragment());
             } else {
                 Toast.makeText(getContext(), getResources().getString(R.string.jap_something_wrong), Toast.LENGTH_SHORT).show();
             }
@@ -408,16 +409,12 @@ public class CourseInfoFragment extends BaseFragment {
         Button login = (Button) view.findViewById(R.id.create_course_info);
         Button del = (Button) view.findViewById(R.id.delete_course);
         final EditText coursename = (EditText) view.findViewById(R.id.course_name_info);
-        final EditText holes2 = (EditText) view.findViewById(R.id.hole_count_info);
+        final Spinner holes = (Spinner) view.findViewById(R.id.hole_count_info);
         final Spinner handicap = (Spinner) view.findViewById(R.id.handicap_info);
-        holes2.addTextChangedListener(new TextWatcher() {
+        holes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) { }
-
-            @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-                String amount_str = holes2.getText().toString();
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String amount_str = holes.getSelectedItem().toString();
                 if (amount_str.matches("") || amount_str.matches(" ")) {
                     amount_str = "0";
                 }
@@ -431,18 +428,17 @@ public class CourseInfoFragment extends BaseFragment {
                     hnt.setText((x + 1) + "");
                     holes_table.addView(item);
                 }
-//                Toast.makeText(getContext(), holes.getText(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void afterTextChanged(Editable editable) {
+            public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
         });
         login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String cname_val = coursename.getText().toString();
-                String holes_val = holes2.getText().toString();
+                String holes_val = holes.getSelectedItem().toString();
                 int holes_int = 0;
                 if (!holes_val.matches("")) {
                     holes_int = Integer.parseInt(holes_val);

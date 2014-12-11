@@ -11,6 +11,7 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -174,16 +175,12 @@ public class CreateCourseFragment extends BaseFragment {
 
         Button login = (Button) view.findViewById(R.id.create_course);
         final EditText coursename = (EditText) view.findViewById(R.id.course_name);
-        final EditText holes = (EditText) view.findViewById(R.id.hole_count);
-        final EditText holes2 = (EditText) view.findViewById(R.id.hole_count);
+        final Spinner holes = (Spinner) view.findViewById(R.id.hole_count);
         final Spinner handicap = (Spinner) view.findViewById(R.id.handicap);
-        holes2.addTextChangedListener(new TextWatcher() {
+        holes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) { }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-                String amount_str = holes2.getText().toString();
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String amount_str = holes.getSelectedItem().toString();
                 if (amount_str.matches("") || amount_str.matches(" ")) {
                     amount_str = "0";
                 }
@@ -197,18 +194,18 @@ public class CreateCourseFragment extends BaseFragment {
                     hnt.setText((x + 1) + "");
                     holes_table.addView(item);
                 }
-//                Toast.makeText(getContext(), holes.getText(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void afterTextChanged(Editable editable) {
+            public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
         });
+
         login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String cname_val = coursename.getText().toString();
-                String holes_val = holes.getText().toString();
+                String holes_val = holes.getSelectedItem().toString();
                 int holes_int = 0;
                 if (!holes_val.matches("")) {
                     holes_int = Integer.parseInt(holes_val);
