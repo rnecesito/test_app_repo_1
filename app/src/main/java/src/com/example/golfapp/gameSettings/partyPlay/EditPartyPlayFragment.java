@@ -2,7 +2,6 @@ package com.example.golfapp.gameSettings.partyPlay;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
@@ -23,6 +22,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.golfapp.BaseFragment;
 import com.example.golfapp.R;
 import com.example.golfapp.R.id;
 
@@ -55,7 +55,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class EditPartyPlayFragment extends Fragment {
+public class EditPartyPlayFragment extends BaseFragment {
     View view_container;
     private boolean success = false;
     private ProgressDialog pdialog;
@@ -443,6 +443,7 @@ public class EditPartyPlayFragment extends Fragment {
             }
             if(success) {
                 Toast.makeText(getActivity(), getResources().getString(R.string.jap_party_updated), Toast.LENGTH_SHORT).show();
+                showFragment(new ViewPartyPlayFragment());
             } else {
                 Toast.makeText(getActivity(), getResources().getString(R.string.jap_something_wrong), Toast.LENGTH_SHORT).show();
             }
@@ -555,7 +556,7 @@ public class EditPartyPlayFragment extends Fragment {
             }
             if(success) {
                 Toast.makeText(getActivity(), getResources().getString(R.string.jap_party_deleted), Toast.LENGTH_SHORT).show();
-                getFragmentManager().popBackStack();
+                showFragment(new ViewPartyPlayFragment());
             } else {
                 Toast.makeText(getActivity(), getResources().getString(R.string.jap_something_wrong), Toast.LENGTH_SHORT).show();
             }
