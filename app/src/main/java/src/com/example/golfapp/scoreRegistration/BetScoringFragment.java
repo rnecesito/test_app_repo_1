@@ -18,7 +18,6 @@ import android.widget.Toast;
 
 import com.example.golfapp.BaseFragment;
 import com.example.golfapp.R;
-import com.example.golfapp.gameSettings.partyPlay.PartyPlayRegistrationFragment;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -92,11 +91,11 @@ public class BetScoringFragment extends BaseFragment {
     }
 
     private class BetTypes {
-        String id = "";
+        int id = 0;
         String name = "";
         String description = "";
 
-        public BetTypes(String _id, String _description, String _name) {
+        public BetTypes(int _id, String _description, String _name) {
             id = _id;
             name = _name;
             description = _description;
@@ -266,12 +265,12 @@ public class BetScoringFragment extends BaseFragment {
 
                     bets_array = new JSONArray(bettype_json_string);
                     ArrayList<BetTypes> bets_list = new ArrayList<BetTypes>();
-                    bets_list.add(new BetTypes("-1", "", "None"));
+                    bets_list.add(new BetTypes(-1, "", "None"));
                     for (int i = 0; i < bets_array.length(); i++) {
                         JSONObject row = null;
                         try {
                             row = bets_array.getJSONObject(i);
-                            bets_list.add(new BetTypes(row.getString("id"), row.getString("description"), row.getString("name")));
+                            bets_list.add(new BetTypes(Integer.parseInt(row.getString("id")), row.getString("description"), row.getString("name")));
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -300,43 +299,6 @@ public class BetScoringFragment extends BaseFragment {
                     }
                     ArrayAdapter spinnerArrayAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_dropdown_item, holes_list);
                     holes_sp.setAdapter(spinnerArrayAdapter);
-                    JSONArray members_array = new JSONArray(party_info.getString("members"));
-                    TableLayout main_table = (TableLayout) view_container.findViewById(R.id.score_reg_party_members);
-                    for (int i = 0; i < members_array.length(); i++) {
-                        JSONObject row = members_array.getJSONObject(i);
-                        LayoutInflater inflater = LayoutInflater.from(getContext());
-                        final View item = inflater.inflate(R.layout.score_reg_member_row, main_table, false);
-                        TextView member_name_col = (TextView) item.findViewById(R.id.score_reg_member_name);
-                        TextView handicap_col = (TextView) item.findViewById(R.id.score_reg_member_handicap);
-//                        JSONObject member_info = new JSONObject(row.getString("member"));
-                        for (Users u : users_list) {
-                            if (u.id.matches(row.getString("member_id"))) {
-                                member_name_col.setText(u.firstname);
-                                member_name_col.setTag(u.id);
-                                handicap_col.setText(u.handicap);
-                            }
-                        }
-                        JSONArray score_info_array = new JSONArray(row.getString("scores"));
-                        TextView course_col = (TextView) item.findViewById(R.id.score_reg_member_score);
-                        if (score_info_array.length() != 0) {
-                            for (int i2 = 0; i2 < score_info_array.length(); i2++) {
-                                JSONObject hole_score = new JSONObject(score_info_array.getJSONObject(i2).toString());
-                                Holes current_hole = (Holes) holes_sp.getSelectedItem();
-                                if (current_hole.id == Integer.parseInt(hole_score.getString("hole_id"))) {
-                                    course_col.setText(hole_score.getString("score"));
-                                }
-                            }
-                        } else {
-                            course_col.setText("0");
-                        }
-                        if(i % 2 == 0) {
-                            item.setBackgroundColor(Color.WHITE);
-                        } else {
-                            item.setBackgroundColor(Color.LTGRAY);
-                        }
-
-                        main_table.addView(item);
-                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -357,20 +319,18 @@ public class BetScoringFragment extends BaseFragment {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-//            pdialog.setMessage(getResources().getString(R.string.jap_loaing_party_info));
-//            pdialog.show();
+            pdialog.setMessage(getResources().getString(R.string.jap_loading_bet_types));
+            pdialog.show();
         }
 
         @Override
         protected String doInBackground(String... strings) {
-            String hole_id = strings[0];
             success = false;
+            byte[] bets_byte = null;
+            String bets_string = "";
 
             byte[] party_byte = null;
             String party_string = "";
-
-            byte[] bet_byte = null;
-            String bet_string = "";
 
             File cDir = getActivity().getCacheDir();
             File tempFile = new File(cDir.getPath() + "/" + "golfapp_token.txt") ;
@@ -404,22 +364,21 @@ public class BetScoringFragment extends BaseFragment {
                 e.printStackTrace();
             }
 
-            HttpClient party_httpclient = new DefaultHttpClient();
-            HttpGet party_httpget = new HttpGet("http://zoogtech.com/golfapp/public/score-registration/scores/"+party_play_number.toString()+"?access_token="+golfapp_token.toString());
+            HttpClient bets_httpclient = new DefaultHttpClient();
+            HttpGet bets_httpget = new HttpGet("http://zoogtech.com/golfapp/public/bet-registration/bets/"+party_play_number.toString()+"?access_token="+golfapp_token.toString());
 
             try {
-                HttpResponse response = party_httpclient.execute(party_httpget);
+                HttpResponse response = bets_httpclient.execute(bets_httpget);
                 StatusLine statusLine = response.getStatusLine();
                 if (statusLine.getStatusCode() == HttpStatus.SC_OK) {
-                    party_byte = EntityUtils.toByteArray(response.getEntity());
-                    party_string = new String(party_byte, "UTF-8");
-                    System.out.println(party_string);
-                    party_json_string = party_string;
+                    bets_byte = EntityUtils.toByteArray(response.getEntity());
+                    bets_string = new String(bets_byte, "UTF-8");
+                    bets_json_string = bets_string;
                     success = true;
                 }else {
-                    party_byte = EntityUtils.toByteArray(response.getEntity());
-                    party_string = new String(party_byte, "UTF-8");
-                    party_json_string = party_string;
+                    bets_byte = EntityUtils.toByteArray(response.getEntity());
+                    bets_string = new String(bets_byte, "UTF-8");
+                    bets_json_string = bets_string;
                     success = false;
                 }
             } catch (UnsupportedEncodingException e) {
@@ -430,22 +389,116 @@ public class BetScoringFragment extends BaseFragment {
                 e.printStackTrace();
             }
 
-            HttpClient bet_httpclient = new DefaultHttpClient();
-            HttpGet bet_httpget = new HttpGet("http://zoogtech.com/golfapp/public/bet-registration/bets/"+hole_id+"?access_token="+golfapp_token.toString());
+            return "Done";
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            if(pdialog != null && pdialog.isShowing()) {
+                pdialog.dismiss();
+            }
+            if(success) {
+                ArrayList<BetTypes> bets_list = new ArrayList<BetTypes>();
+                JSONObject bets_info = null;
+                Spinner spinner2 = (Spinner) view_container.findViewById(R.id.score_reg_bet_type);
+                Spinner spinner = (Spinner) view_container.findViewById(R.id.score_reg_holes);
+                Holes h = (Holes) spinner.getSelectedItem();
+                try {
+                    bets_info = new JSONObject(bets_json_string);
+                    JSONObject course_info = new JSONObject(bets_info.getString("course"));
+                    JSONArray holes = new JSONArray(course_info.getString("hole_items"));
+                    for (int index = 0; index < holes.length(); index++) {
+                        JSONObject bet_row = holes.getJSONObject(index);
+                        if (bet_row.getString("id").matches(String.valueOf(h.id))) {
+                            JSONArray bets_array2 = new JSONArray(bet_row.getString("bets"));
+                            for (int index2 = 0; index2 < bets_array2.length(); index2++) {
+                                JSONObject bet_info = bets_array2.getJSONObject(index2);
+                                JSONObject bet_type_info = new JSONObject(bet_info.getString("bet_type"));
+                                bets_list.add(new BetTypes(Integer.parseInt(bet_type_info.getString("id")), bet_type_info.getString("description"), bet_type_info.getString("name")));
+                            }
+                        }
+                    }
+                    ArrayAdapter spinnerArrayAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_dropdown_item, bets_list);
+                    spinner2.setAdapter(spinnerArrayAdapter);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                Toast.makeText(getActivity(), getResources().getString(R.string.jap_loading_complete), Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getActivity(), getResources().getString(R.string.jap_something_wrong), Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private class ChangeBetType extends AsyncTask<String, String, String> {
+        public ChangeBetType() {
+            pdialog = new ProgressDialog(getActivity());
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+//            pdialog.setMessage(getResources().getString(R.string.jap_loaing_party_info));
+//            pdialog.show();
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            success = false;
+            byte[] bets_byte = null;
+            String bets_string = "";
+
+            byte[] party_byte = null;
+            String party_string = "";
+
+            File cDir = getActivity().getCacheDir();
+            File tempFile = new File(cDir.getPath() + "/" + "golfapp_token.txt") ;
+            String strLine="";
+            StringBuilder golfapp_token = new StringBuilder();
+            try {
+                FileReader fReader = new FileReader(tempFile);
+                BufferedReader bReader = new BufferedReader(fReader);
+                while( (strLine=bReader.readLine()) != null  ){
+                    golfapp_token.append(strLine);
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }catch(IOException e){
+                e.printStackTrace();
+            }
+
+            File cDir2 = getActivity().getCacheDir();
+            File tempFile2 = new File(cDir2.getPath() + "/" + "party_play_number.txt") ;
+            String strLine2="";
+            StringBuilder party_play_number = new StringBuilder();
+            try {
+                FileReader fReader = new FileReader(tempFile2);
+                BufferedReader bReader = new BufferedReader(fReader);
+                while( (strLine2=bReader.readLine()) != null  ){
+                    party_play_number.append(strLine2);
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }catch(IOException e){
+                e.printStackTrace();
+            }
+
+            HttpClient bets_httpclient = new DefaultHttpClient();
+            HttpGet bets_httpget = new HttpGet("http://zoogtech.com/golfapp/public/score-registration/bets/"+party_play_number.toString()+"?access_token="+golfapp_token.toString());
 
             try {
-                HttpResponse response = bet_httpclient.execute(bet_httpget);
+                HttpResponse response = bets_httpclient.execute(bets_httpget);
                 StatusLine statusLine = response.getStatusLine();
                 if (statusLine.getStatusCode() == HttpStatus.SC_OK) {
-                    bet_byte = EntityUtils.toByteArray(response.getEntity());
-                    bet_string = new String(bet_byte, "UTF-8");
-                    System.out.println(bet_string);
-                    bets_json_string = bet_string;
+                    bets_byte = EntityUtils.toByteArray(response.getEntity());
+                    bets_string = new String(bets_byte, "UTF-8");
+                    bets_json_string = bets_string;
                     success = true;
                 }else {
-                    bet_byte = EntityUtils.toByteArray(response.getEntity());
-                    bet_string = new String(bet_byte, "UTF-8");
-                    bets_json_string = bet_string;
+                    bets_byte = EntityUtils.toByteArray(response.getEntity());
+                    bets_string = new String(bets_byte, "UTF-8");
+                    bets_json_string = bets_string;
                     success = false;
                 }
             } catch (UnsupportedEncodingException e) {
@@ -466,80 +519,83 @@ public class BetScoringFragment extends BaseFragment {
 //                pdialog.dismiss();
 //            }
             if(success) {
+                main_table.removeAllViews();
                 JSONObject party_info = null;
                 JSONArray users_info = null;
-//                JSONObject
+                JSONObject bets_info = null;
+                ArrayList<Users> users_list = new ArrayList<Users>();
+                Spinner bet_type_spinner = (Spinner) view_container.findViewById(R.id.score_reg_bet_type);
+                BetTypes current_bet_type = (BetTypes) bet_type_spinner.getSelectedItem();
                 try {
-                    users_info = new JSONArray(users_json_string);
-                    ArrayList<Users> users_list = new ArrayList<Users>();
-                    for (int i = 0; i < users_info.length(); i++) {
-                        JSONObject row = null;
-                        try {
-                            row = users_info.getJSONObject(i);
-                            users_list.add(new Users(row.getString("id"), row.getString("handicap"), row.getString("firstname")));
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+                    bets_info = new JSONObject(bets_json_string);
+                    JSONArray members_ja = new JSONArray(bets_info.getString("members"));
+                    for (int index = 0; index < members_ja.length(); index++) {
+                        JSONObject member_info = members_ja.getJSONObject(index);
+                        JSONObject member_info_names = new JSONObject(member_info.getString("member"));
+                        users_list.add(new Users(member_info.getString("party_play_id"), member_info_names.getString("handicap"), member_info_names.getString("firstname")));
                     }
-                    party_info = new JSONObject(party_json_string);
-                    JSONObject course_info = new JSONObject(party_info.getString("course"));
-                    Spinner holes_sp = (Spinner) view_container.findViewById(R.id.score_reg_holes);
-                    JSONArray members_array = new JSONArray(party_info.getString("members"));
-                    main_table.removeAllViews();
-                    for (int i = 0; i < members_array.length(); i++) {
-                        JSONObject row = members_array.getJSONObject(i);
-                        LayoutInflater inflater = LayoutInflater.from(getContext());
-                        final View item = inflater.inflate(R.layout.score_reg_member_row, main_table, false);
-                        TextView member_name_col = (TextView) item.findViewById(R.id.score_reg_member_name);
-                        TextView handicap_col = (TextView) item.findViewById(R.id.score_reg_member_handicap);
-//                        JSONObject member_info = new JSONObject(row.getString("member"));
-                        for (Users u : users_list) {
-                            if (u.id.matches(row.getString("member_id"))) {
-                                member_name_col.setText(u.firstname);
-                                member_name_col.setTag(u.id);
-                                handicap_col.setText(u.handicap);
-                            }
-                        }
-                        JSONArray score_info_array = new JSONArray(row.getString("scores"));
-                        TextView course_col = (TextView) item.findViewById(R.id.score_reg_member_score);
-                        if (score_info_array.length() != 0) {
-                            for (int i2 = 0; i2 < score_info_array.length(); i2++) {
-                                JSONObject hole_score = new JSONObject(score_info_array.getJSONObject(i2).toString());
-                                Holes current_hole = (Holes) holes_sp.getSelectedItem();
-                                if (current_hole.id == Integer.parseInt(hole_score.getString("hole_id"))) {
-                                    course_col.setText(hole_score.getString("score"));
+                    int i = 0;
+                    for (Users u : users_list) {
+                        JSONArray bet_scores = new JSONArray(bets_info.getString("bet_scores"));
+                        if (bet_scores.length() > 0) {
+                            for (int index = 0; index < bet_scores.length(); index++) {
+                                JSONObject bet_score_info = bet_scores.getJSONObject(index);
+                                JSONObject party_play_bet = new JSONObject(bet_score_info.getString("party_play_bet"));
+                                if ((current_bet_type.id == Integer.parseInt(party_play_bet.getString("bet_type_id"))) & u.id.matches(party_play_bet.getString("party_play_id"))) {
+                                    LayoutInflater inflater = LayoutInflater.from(getContext());
+                                    final View item = inflater.inflate(R.layout.score_reg_member_row, main_table, false);
+                                    TextView member_name_col = (TextView) item.findViewById(R.id.score_reg_member_name);
+                                    TextView handicap_col = (TextView) item.findViewById(R.id.score_reg_member_handicap);
+                                    TextView score_col = (TextView) item.findViewById(R.id.score_reg_member_score);
+                                    member_name_col.setText(u.firstname);
+                                    member_name_col.setTag(u.id);
+                                    handicap_col.setText(u.handicap);
+                                    score_col.setText(bet_score_info.getString("score"));
+                                    ImageButton add_score = (ImageButton) item.findViewById(R.id.add_score);
+                                    ImageButton sub_score = (ImageButton) item.findViewById(R.id.sub_score);
+                                    add_score.setOnClickListener(addScore);
+                                    sub_score.setOnClickListener(subScore);
+                                    if(i % 2 == 0) {
+                                        item.setBackgroundColor(Color.WHITE);
+                                    } else {
+                                        item.setBackgroundColor(Color.LTGRAY);
+                                    }
+                                    main_table.addView(item);
+                                    i = i + 1;
                                 }
                             }
                         } else {
-                            course_col.setText("0");
+                            LayoutInflater inflater = LayoutInflater.from(getContext());
+                            final View item = inflater.inflate(R.layout.score_reg_member_row, main_table, false);
+                            TextView member_name_col = (TextView) item.findViewById(R.id.score_reg_member_name);
+                            TextView handicap_col = (TextView) item.findViewById(R.id.score_reg_member_handicap);
+                            TextView score_col = (TextView) item.findViewById(R.id.score_reg_member_score);
+                            member_name_col.setText(u.firstname);
+                            member_name_col.setTag(u.id);
+                            handicap_col.setText(u.handicap);
+                            score_col.setText("");
+                            ImageButton add_score = (ImageButton) item.findViewById(R.id.add_score);
+                            ImageButton sub_score = (ImageButton) item.findViewById(R.id.sub_score);
+                            add_score.setOnClickListener(addScore);
+                            sub_score.setOnClickListener(subScore);
+                            if(i % 2 == 0) {
+                                item.setBackgroundColor(Color.WHITE);
+                            } else {
+                                item.setBackgroundColor(Color.LTGRAY);
+                            }
+                            main_table.addView(item);
+                            i = i + 1;
                         }
-                        ImageButton add_score = (ImageButton) item.findViewById(R.id.add_score);
-                        ImageButton sub_score = (ImageButton) item.findViewById(R.id.sub_score);
-                        add_score.setOnClickListener(addScore);
-                        sub_score.setOnClickListener(subScore);
-                        if(i % 2 == 0) {
-                            item.setBackgroundColor(Color.WHITE);
-                        } else {
-                            item.setBackgroundColor(Color.LTGRAY);
-                        }
-
-                        main_table.addView(item);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-
 //                Toast.makeText(getActivity(), getResources().getString(R.string.jap_loading_complete), Toast.LENGTH_SHORT).show();
             } else {
 //                Toast.makeText(getActivity(), getResources().getString(R.string.jap_something_wrong), Toast.LENGTH_SHORT).show();
             }
         }
     }
-
-
-
-
 
 
     private class RegisterScore extends AsyncTask<String, String, String> {
@@ -595,12 +651,12 @@ public class BetScoringFragment extends BaseFragment {
             }
 
             HttpClient httpclient = new DefaultHttpClient();
-            HttpPut httppost = new HttpPut("http://zoogtech.com/golfapp/public/score-registration/bet/"+party_play_number.toString());
+            HttpPut httppost = new HttpPut("http://zoogtech.com/golfapp/public/score-registration/bet");
 
             try {
                 Spinner holes_sp = (Spinner) view_container.findViewById(R.id.score_reg_holes);
                 Spinner bet_sp = (Spinner) view_container.findViewById(R.id.score_reg_bet_type);
-                TableLayout tv = (TableLayout) view_container.findViewById(R.id.score_reg_party_members);
+                TableLayout tv = (TableLayout) view_container.findViewById(R.id.score_reg_party_members_table);
                 Holes h1 = (Holes) holes_sp.getSelectedItem();
                 BetTypes b1 = (BetTypes) bet_sp.getSelectedItem();
                 List<NameValuePair> json = new ArrayList<NameValuePair>();
@@ -609,8 +665,8 @@ public class BetScoringFragment extends BaseFragment {
                 json.add(new BasicNameValuePair("party_play_id", party_play_number.toString()));
                 for (int index = 0; index < tv.getChildCount(); index++) {
                     TableRow tr = (TableRow) tv.getChildAt(index);
-                    TextView member = (TextView) tv.findViewById(R.id.score_reg_member_name);
-                    TextView score = (TextView) tv.findViewById(R.id.score_reg_member_score);
+                    TextView member = (TextView) tr.getChildAt(0);
+                    TextView score = (TextView) tr.getChildAt(4);
                     String member_id = member.getTag().toString();
                     String member_score = score.getText().toString();
                     json.add(new BasicNameValuePair("scores["+index+"][party_member_id]", member_id));
@@ -664,11 +720,21 @@ public class BetScoringFragment extends BaseFragment {
 	
 	@OnClick(R.id.record_score_btn)
 	public void saveRecordScore(Button btn) {
-		if (btn.getText().equals(getResources().getString(R.string.jap_record_score))) {
+        if (btn.getText().equals(getResources().getString(R.string.jap_record_score))) {
             btn.setText(getResources().getString(R.string.jap_save));
-            TableLayout mt = (TableLayout) view_container.findViewById(R.id.score_reg_party_members);
+            Spinner sp = (Spinner) view_container.findViewById(R.id.score_reg_holes);
+            Spinner sp2 = (Spinner) view_container.findViewById(R.id.score_reg_bet_type);
+            sp.getSelectedView().setEnabled(false);
+            sp.setEnabled(false);
+            sp2.getSelectedView().setEnabled(false);
+            sp2.setEnabled(false);
+            TableLayout mt = (TableLayout) view_container.findViewById(R.id.score_reg_party_members_table);
             for (int index = 0; index < mt.getChildCount(); index++) {
                 TableRow tr = (TableRow) mt.getChildAt(index);
+                TextView tv1 = (TextView) tr.getChildAt(4);
+                if (tv1.getText().equals("")) {
+                    tv1.setText("0");
+                }
                 ImageButton im1 = (ImageButton) tr.getChildAt(6);
                 ImageButton im2 = (ImageButton) tr.getChildAt(5);
                 im1.setVisibility(View.VISIBLE);
@@ -676,14 +742,36 @@ public class BetScoringFragment extends BaseFragment {
             }
         } else {
             new RegisterScore().execute();
-            showFragmentAndAddToBackStack(new PartyPlayRegistrationFragment());
+            btn.setText(getResources().getString(R.string.jap_record_score));
+            Spinner sp = (Spinner) view_container.findViewById(R.id.score_reg_holes);
+            Spinner sp2 = (Spinner) view_container.findViewById(R.id.score_reg_bet_type);
+            sp.getSelectedView().setEnabled(true);
+            sp.setEnabled(true);
+            sp2.getSelectedView().setEnabled(true);
+            sp2.setEnabled(true);
+            TableLayout mt = (TableLayout) view_container.findViewById(R.id.score_reg_party_members_table);
+            for (int index = 0; index < mt.getChildCount(); index++) {
+                TableRow tr = (TableRow) mt.getChildAt(index);
+                TextView tv1 = (TextView) tr.getChildAt(4);
+                if (tv1.getText().equals("")) {
+                    tv1.setText("0");
+                }
+                ImageButton im1 = (ImageButton) tr.getChildAt(6);
+                ImageButton im2 = (ImageButton) tr.getChildAt(5);
+                im1.setVisibility(View.INVISIBLE);
+                im2.setVisibility(View.INVISIBLE);
+            }
         }
 	}
 
     @OnItemSelected(R.id.score_reg_holes)
     public void changeHole(Spinner spinner) {
-        Holes h = (Holes) spinner.getSelectedItem();
-        new ChangeHole().execute(h.id+"");
+        new ChangeHole().execute();
+    }
+
+    @OnItemSelected(R.id.score_reg_bet_type)
+    public void changeBet() {
+        new ChangeBetType().execute();
     }
 	
 	@Override
@@ -696,7 +784,7 @@ public class BetScoringFragment extends BaseFragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         view_container = view;
-        main_table = (TableLayout) view.findViewById(R.id.score_reg_party_members);
+        main_table = (TableLayout) view.findViewById(R.id.score_reg_party_members_table);
         new InitLists().execute();
     }
 

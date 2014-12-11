@@ -443,7 +443,7 @@ public class EditPartyPlayFragment extends BaseFragment {
             }
             if(success) {
                 Toast.makeText(getActivity(), getResources().getString(R.string.jap_party_updated), Toast.LENGTH_SHORT).show();
-                showFragment(new ViewPartyPlayFragment());
+                showFragmentAndAddToBackStack(new ViewPartyPlayFragment());
             } else {
                 Toast.makeText(getActivity(), getResources().getString(R.string.jap_something_wrong), Toast.LENGTH_SHORT).show();
             }
@@ -556,7 +556,7 @@ public class EditPartyPlayFragment extends BaseFragment {
             }
             if(success) {
                 Toast.makeText(getActivity(), getResources().getString(R.string.jap_party_deleted), Toast.LENGTH_SHORT).show();
-                showFragment(new ViewPartyPlayFragment());
+                showFragmentAndAddToBackStack(new ViewPartyPlayFragment());
             } else {
                 Toast.makeText(getActivity(), getResources().getString(R.string.jap_something_wrong), Toast.LENGTH_SHORT).show();
             }
@@ -599,7 +599,7 @@ public class EditPartyPlayFragment extends BaseFragment {
         add_player_btn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(competitor_list.getChildCount() < 3) {
+                if(competitor_list.getChildCount() < 4) {
                     LayoutInflater inflater = LayoutInflater.from(getActivity());
                     View item = inflater.inflate(R.layout.row_player_handicap, competitor_list, false);
                     ImageView del_btn = (ImageView) item.findViewById(R.id.delete_competitor);

@@ -403,7 +403,7 @@ public class CreatePartyPlayFragment extends BaseFragment {
             }
             if(success) {
                 Toast.makeText(getContext(), getResources().getString(R.string.jap_party_created), Toast.LENGTH_SHORT).show();
-                showFragment(new ViewPartyPlayFragment());
+                showFragmentAndAddToBackStack(new ViewPartyPlayFragment());
             } else {
                 Toast.makeText(getContext(), getResources().getString(R.string.jap_something_wrong), Toast.LENGTH_SHORT).show();
             }

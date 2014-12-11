@@ -121,7 +121,7 @@
         android:background="#fff"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:text="@string/jap_party_play_score_counting"
+        android:text="@string/jap_bet_counting"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>

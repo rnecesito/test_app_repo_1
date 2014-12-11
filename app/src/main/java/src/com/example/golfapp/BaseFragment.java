@@ -47,7 +47,7 @@ public abstract class BaseFragment extends Fragment {
 
 		FragmentManager fragmentManager = getFragmentManager();
 		fragmentManager.beginTransaction()
-                .hide(this)
+                .remove(this)
                 .setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right)
                 .add(R.id.container, fragment)
                 .addToBackStack(fragment.getClass().getSimpleName())

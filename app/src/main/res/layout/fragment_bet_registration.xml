@@ -86,7 +86,7 @@
                 android:textSize="14sp" />
 
             <Spinner
-                android:id="@+id/bet_reg_holes"
+                android:id="@+id/bet_reg_holes2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

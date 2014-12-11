@@ -36,7 +36,7 @@
             android:drawableLeft="@drawable/open_competition"
             android:drawablePadding="10dp"
             android:text="@string/jap_open_competition"
-            android:visibility="gone"
+            android:visibility="visible"
             android:textSize="14sp" />
     </LinearLayout>
 

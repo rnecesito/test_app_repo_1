@@ -271,6 +271,7 @@
     <!--<string name="jap_show_my_group_only"> 自分のグループのみ表示</string>-->
     <!--<string name="jap_group"> グループ</string>-->
     <!--<string name="jap_members">メンバ</string>-->
+    <!--<string name="jap_loading_bet_types">ローディングベットタイプ...</string>-->
 
 
     <string name="app_name">Golf App</string>
@@ -425,4 +426,5 @@
     <string name="jap_show_my_group_only">Show My Group Only</string>
     <string name="jap_group">Group</string>
     <string name="jap_members">Members</string>
+    <string name="jap_loading_bet_types">Loading bet types...</string>
 </resources>

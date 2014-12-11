@@ -280,7 +280,7 @@
         android:background="#fff"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:text="Competition Score Counting"
+        android:text="@string/jap_competition_score_counting"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>

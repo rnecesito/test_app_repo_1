@@ -6,22 +6,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.textservice.TextInfo;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import butterknife.OnClick;
-
 import com.example.golfapp.BaseFragment;
 import com.example.golfapp.R;
-import com.example.golfapp.gameSettings.partyPlay.PartyPlayRegistrationFragment;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -30,7 +21,6 @@ import org.apache.http.StatusLine;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -50,12 +40,16 @@ import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.OnClick;
+import butterknife.OnItemSelected;
+
 public class BetRegistrationFragment extends BaseFragment {
     View view_container;
     private boolean success = false;
     private ProgressDialog pdialog;
     String bettype_json_string;
     String party_json_string;
+    String bets_json_string;
     String retVal;
 
     private class Bets {
@@ -209,7 +203,7 @@ public class BetRegistrationFragment extends BaseFragment {
                     JSONObject course_info = new JSONObject(party_info.getString("course"));
                     TextView name_tv = (TextView) view_container.findViewById(R.id.bet_reg_party_name);
                     TextView course_tv = (TextView) view_container.findViewById(R.id.bet_reg_course_name);
-                    Spinner holes_sp = (Spinner) view_container.findViewById(R.id.bet_reg_holes);
+                    Spinner holes_sp = (Spinner) view_container.findViewById(R.id.bet_reg_holes2);
                     name_tv.setText(party_info.getString("name"));
                     course_tv.setText(course_info.getString("name"));
                     JSONArray holes_array = new JSONArray(course_info.getString("hole_items"));
@@ -255,6 +249,159 @@ public class BetRegistrationFragment extends BaseFragment {
                 }
 
 
+                Toast.makeText(getActivity(), getResources().getString(R.string.jap_loading_complete), Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getActivity(), getResources().getString(R.string.jap_something_wrong), Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private class ChangeHole extends AsyncTask<String, String, String> {
+        public ChangeHole() {
+            pdialog = new ProgressDialog(getActivity());
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pdialog.setMessage(getResources().getString(R.string.jap_loaing_party_info));
+            pdialog.show();
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            success = false;
+            byte[] bets_byte = null;
+            String bets_string = "";
+
+            byte[] party_byte = null;
+            String party_string = "";
+
+            File cDir = getActivity().getCacheDir();
+            File tempFile = new File(cDir.getPath() + "/" + "golfapp_token.txt") ;
+            String strLine="";
+            StringBuilder golfapp_token = new StringBuilder();
+            try {
+                FileReader fReader = new FileReader(tempFile);
+                BufferedReader bReader = new BufferedReader(fReader);
+                while( (strLine=bReader.readLine()) != null  ){
+                    golfapp_token.append(strLine);
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }catch(IOException e){
+                e.printStackTrace();
+            }
+
+            File cDir2 = getActivity().getCacheDir();
+            File tempFile2 = new File(cDir2.getPath() + "/" + "party_play_number.txt") ;
+            String strLine2="";
+            StringBuilder party_play_number = new StringBuilder();
+            try {
+                FileReader fReader = new FileReader(tempFile2);
+                BufferedReader bReader = new BufferedReader(fReader);
+                while( (strLine2=bReader.readLine()) != null  ){
+                    party_play_number.append(strLine2);
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }catch(IOException e){
+                e.printStackTrace();
+            }
+
+            HttpClient bets_httpclient = new DefaultHttpClient();
+            HttpGet bets_httpget = new HttpGet("http://zoogtech.com/golfapp/public/bet-registration/bets/"+party_play_number.toString()+"?access_token="+golfapp_token.toString());
+
+            try {
+                HttpResponse response = bets_httpclient.execute(bets_httpget);
+                StatusLine statusLine = response.getStatusLine();
+                if (statusLine.getStatusCode() == HttpStatus.SC_OK) {
+                    bets_byte = EntityUtils.toByteArray(response.getEntity());
+                    bets_string = new String(bets_byte, "UTF-8");
+                    bets_json_string = bets_string;
+                    success = true;
+                }else {
+                    bets_byte = EntityUtils.toByteArray(response.getEntity());
+                    bets_string = new String(bets_byte, "UTF-8");
+                    bets_json_string = bets_string;
+                    success = false;
+                }
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            } catch (ClientProtocolException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return "Done";
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            if(pdialog != null && pdialog.isShowing()) {
+                pdialog.dismiss();
+            }
+            if(success) {
+                ArrayList<Bets> bets_list = null;
+                JSONArray bets_array = null;
+                Spinner bet_type_1 = (Spinner) view_container.findViewById(R.id.bet_type_1);
+                Spinner bet_type_2 = (Spinner) view_container.findViewById(R.id.bet_type_2);
+                Spinner bet_type_3 = (Spinner) view_container.findViewById(R.id.bet_type_3);
+                try {
+                    bets_array = new JSONArray(bettype_json_string);
+                    bets_list = new ArrayList<Bets>();
+                    bets_list.add(new Bets(-1, "", "None"));
+                    for (int i = 0; i < bets_array.length(); i++) {
+                        JSONObject row = null;
+                        try {
+                            row = bets_array.getJSONObject(i);
+                            bets_list.add(new Bets(Integer.parseInt(row.getString("id")), row.getString("description"), row.getString("name")));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    ArrayAdapter spinnerArrayAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_dropdown_item, bets_list);
+                    bet_type_1.setAdapter(spinnerArrayAdapter);
+                    bet_type_2.setAdapter(spinnerArrayAdapter);
+                    bet_type_3.setAdapter(spinnerArrayAdapter);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                JSONObject bets_info = null;
+                Spinner spinner = (Spinner) view_container.findViewById(R.id.bet_reg_holes2);
+                Holes h = (Holes) spinner.getSelectedItem();
+                try {
+                    bets_info = new JSONObject(bets_json_string);
+                    JSONObject course_info = new JSONObject(bets_info.getString("course"));
+                    JSONArray holes = new JSONArray(course_info.getString("hole_items"));
+                    for (int index = 0; index < holes.length(); index++) {
+                        JSONObject bet_row = holes.getJSONObject(index);
+                        if (bet_row.getString("id").matches(String.valueOf(h.id))) {
+                            JSONArray bets_array2 = new JSONArray(bet_row.getString("bets"));
+                            for (int index2 = 0; index2 < bets_array2.length(); index2++) {
+                                JSONObject bet_info = bets_array2.getJSONObject(index2);
+                                int x = 0;
+                                for (Bets b : bets_list) {
+                                    if (b.id == Integer.parseInt(bet_info.getString("bet_type_id"))){
+                                        if (index2 == 0) {
+                                            bet_type_1.setSelection(x);
+                                        } else if (index2 == 1) {
+                                            bet_type_2.setSelection(x);
+                                        } else if (index2 == 2) {
+                                            bet_type_3.setSelection(x);
+                                        }
+                                    }
+                                    x = x + 1;
+                                }
+                            }
+                        }
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 Toast.makeText(getActivity(), getResources().getString(R.string.jap_loading_complete), Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(getActivity(), getResources().getString(R.string.jap_something_wrong), Toast.LENGTH_SHORT).show();
@@ -326,35 +473,32 @@ public class BetRegistrationFragment extends BaseFragment {
                 Bets b1 = (Bets) bet_type_1.getSelectedItem();
                 Bets b2 = (Bets) bet_type_2.getSelectedItem();
                 Bets b3 = (Bets) bet_type_3.getSelectedItem();
-                Spinner holes_sp = (Spinner) view_container.findViewById(R.id.bet_reg_holes);
+                Spinner holes_sp = (Spinner) view_container.findViewById(R.id.bet_reg_holes2);
                 Holes h1 = (Holes) holes_sp.getSelectedItem();
                 List<NameValuePair> json = new ArrayList<NameValuePair>();
                 json.add(new BasicNameValuePair("hole_id", h1.id+""));
-                int index = 0;
-                if (b1.id != -1) {
-                    json.add(new BasicNameValuePair("bets["+index+"][bet_type_id]", b1.id+""));
-                    json.add(new BasicNameValuePair("bets["+index+"][amount]", 0+""));
-                    index += 1;
+                int in = 0;
+                for (int indx = 0; indx < 3; indx++) {
+                    if(indx == 0) {
+                        if (b1.id != -1) {
+                            json.add(new BasicNameValuePair("bets["+in+"][bet_type_id]", b1.id+""));
+                            json.add(new BasicNameValuePair("bets["+in+"][amount]", 0+""));
+                            in = in + 1;
+                        }
+                    } else if (indx == 1) {
+                        if (b2.id != -1) {
+                            json.add(new BasicNameValuePair("bets["+in+"][bet_type_id]", b2.id+""));
+                            json.add(new BasicNameValuePair("bets["+in+"][amount]", 0+""));
+                            in = in + 1;
+                        }
+                    } else if (indx == 2) {
+                        if (b3.id != -1) {
+                            json.add(new BasicNameValuePair("bets["+in+"][bet_type_id]", b3.id+""));
+                            json.add(new BasicNameValuePair("bets["+in+"][amount]", 0+""));
+                            in = in + 1;
+                        }
+                    }
                 }
-                if (b2.id != -1) {
-                    json.add(new BasicNameValuePair("bets["+index+"][bet_type_id]", b2.id+""));
-                    json.add(new BasicNameValuePair("bets["+index+"][amount]", 0+""));
-                    index += 1;
-                }
-                if (b3.id != -1) {
-                    json.add(new BasicNameValuePair("bets["+index+"][bet_type_id]", b3.id+""));
-                    json.add(new BasicNameValuePair("bets["+index+"][amount]", 0+""));
-                    index += 1;
-                }
-//                json.add(new BasicNameValuePair("course_id", course));
-//                for(int index = 0; index < competitor_list.getChildCount(); index++){
-//                    TableRow row = (TableRow) competitor_list.getChildAt(index);
-//                    RelativeLayout rl = (RelativeLayout) row.getChildAt(0);
-//                    Spinner sp = (Spinner) rl.getChildAt(1);
-//                    Players pl = (Players) sp.getSelectedItem();
-//                    int pl_id = pl.id;
-//                    json.add(new BasicNameValuePair("members["+index+"]", pl_id+""));
-//                }
 
                 httppost.setHeader("Content-type", "application/x-www-form-urlencoded");
                 httppost.setHeader("Authorization", golfapp_token.toString());
@@ -399,6 +543,11 @@ public class BetRegistrationFragment extends BaseFragment {
                 Toast.makeText(getActivity(), getResources().getString(R.string.jap_something_wrong), Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    @OnItemSelected(R.id.bet_reg_holes2)
+    public void change() {
+        new ChangeHole().execute();
     }
 
 	@OnClick(R.id.bet_register)
