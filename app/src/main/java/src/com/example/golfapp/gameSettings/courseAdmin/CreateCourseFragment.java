@@ -113,7 +113,7 @@ public class CreateCourseFragment extends BaseFragment {
                     if(!hole_par.matches("")) {
                         par1 = Integer.parseInt(hole_par);
                     }
-                    json.add(new BasicNameValuePair("hole_items["+index+"][hole_number]", index+1+""));
+                    json.add(new BasicNameValuePair("hole_items["+index+"][hole_number]", index+""));
                     json.add(new BasicNameValuePair("hole_items["+index+"][par]", par1+""));
                 }
 
