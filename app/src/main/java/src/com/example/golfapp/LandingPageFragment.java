@@ -25,6 +25,7 @@ public class LandingPageFragment extends BaseFragment {
 			public void onClick(View v) {
 				getFragmentManager().beginTransaction().setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right)
 						.replace(R.id.container, new LoginFragment()).commit();
+//                popBackStack();
 			}
 		});
 

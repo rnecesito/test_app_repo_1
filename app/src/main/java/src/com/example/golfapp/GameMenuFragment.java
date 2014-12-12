@@ -13,7 +13,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-public class GameMenuFragment extends Fragment {
+public class GameMenuFragment extends BaseFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -27,6 +27,7 @@ public class GameMenuFragment extends Fragment {
 		Button logout = (Button) view.findViewById(R.id.logout_btn);
 		logout.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
+                popBackStack();
 				getFragmentManager().beginTransaction().setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right)
 						.replace(R.id.container, new LandingPageFragment()).commit();
 			}
