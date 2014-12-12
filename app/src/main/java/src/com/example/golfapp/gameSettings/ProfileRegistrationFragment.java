@@ -159,13 +159,17 @@ public class ProfileRegistrationFragment extends BaseFragment {
                 } else if(email_val.matches("")) {
                     Toast.makeText(getContext(), getResources().getString(R.string.jap_enter_email), Toast.LENGTH_SHORT).show();
                     return;
+                }else if(!isEmailValid(email_val)){
+                    Toast.makeText(getContext(), getResources().getString(R.string.jap_invalid_email_format), Toast.LENGTH_SHORT).show();
+                    return;
                 } else if(pass_val.matches("")) {
                     Toast.makeText(getContext(), getResources().getString(R.string.jap_enter_pass), Toast.LENGTH_SHORT).show();
                     return;
                 } else if(pass2_val.matches("")) {
                     Toast.makeText(getContext(), getResources().getString(R.string.jap_enter_pass_again), Toast.LENGTH_SHORT).show();
                     return;
-                } else {
+                }
+                else {
                     if (!pass_val.matches(pass2_val)) {
                         Toast.makeText(getContext(), getResources().getString(R.string.jap_match_pass), Toast.LENGTH_SHORT).show();
                         return;
@@ -181,4 +185,8 @@ public class ProfileRegistrationFragment extends BaseFragment {
             }
         });
     }
+        boolean isEmailValid(CharSequence email) {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
 }

@@ -2,18 +2,18 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Rey\AndroidStudioProjects\golfapp_ed2\app\libs\butterknife-5.1.1.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="b3652dfd65ca0bcf18790ff1a1f7624af4cb2bb8">
-        <dex dex="C:\Users\Rey\AndroidStudioProjects\golfapp_ed2\app\build\intermediates\pre-dexed\debug\butterknife-5.1.1-fe6d550bc4584c377c96a4f3f58cf94fa5fff834.jar" />
-    </item>
-    <item
-        jar="E:\Program Files\android-sdk-windows\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
+        jar="C:\AndroidApp\adt-bundle-windows-x86_64-20130917\sdk\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
         jumboMode="false"
         revision="20.0.0"
         sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67">
-        <dex dex="C:\Users\Rey\AndroidStudioProjects\golfapp_ed2\app\build\intermediates\pre-dexed\debug\support-v4-19.1.0-6cfcb22ba443edd2ff2a61f454c74260fafa50f6.jar" />
+        <dex dex="C:\codebase\new golfapp\test_app_repo_1\app\build\intermediates\pre-dexed\debug\support-v4-19.1.0-6c0fe114a6a3e8924eb11d5ae0f933b876254c8d.jar" />
+    </item>
+    <item
+        jar="C:\codebase\new golfapp\test_app_repo_1\app\libs\butterknife-5.1.1.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="b3652dfd65ca0bcf18790ff1a1f7624af4cb2bb8">
+        <dex dex="C:\codebase\new golfapp\test_app_repo_1\app\build\intermediates\pre-dexed\debug\butterknife-5.1.1-57cdfdffafe78a77c85ed88a1e6d9b34b662e573.jar" />
     </item>
 
 </items>

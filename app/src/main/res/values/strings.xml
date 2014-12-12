@@ -427,4 +427,5 @@
     <string name="jap_group">Group</string>
     <string name="jap_members">Members</string>
     <string name="jap_loading_bet_types">Loading bet types...</string>
+    <string name="jap_invalid_email_format">Please Enter Email correctly</string>
 </resources>

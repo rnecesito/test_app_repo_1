@@ -328,11 +328,17 @@ public class UserProfileFragment extends BaseFragment {
 //                } else if(pass_val.matches("")) {
 //                    Toast.makeText(getContext(), "Please enter your password", Toast.LENGTH_SHORT).show();
 //                    return;
-                } else {
+                } else if(!isEmailValid(email_val)){
+                    Toast.makeText(getContext(), getResources().getString(R.string.jap_invalid_email_format), Toast.LENGTH_SHORT).show();
+                }
+                else {
                     new UpdateCall().execute(fname_val, lname_val, gender.getSelectedItem().toString(), hc.getSelectedItem().toString(), email_val, pass_val);
                 }
 
             }
         });
+    }
+    boolean isEmailValid(CharSequence email) {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 }
